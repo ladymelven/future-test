@@ -1,0 +1,11 @@
+.Row {
+  border: 1px solid #2c3a47;
+  border-collapse: collapse;
+}
+
+.Cell {
+  border: 1px solid #2c3a47;
+  border-collapse: collapse;
+  padding: 5px 10px;
+  cursor: default;
+}

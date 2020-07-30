@@ -1,0 +1,38 @@
+.Pagination {
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+}
+
+.page {
+  color: #2c3a47;
+  border: 1px solid #55e6c1;
+  border-collapse: collapse;
+  border-radius: 5px;
+  padding: 5px;
+  text-align: center;
+  cursor: pointer;
+  width: 35px;
+}
+
+.page:not(:last-child) {
+  margin-right: 2px;
+}
+
+.first,
+.last {
+  background-color: #9aecdb;
+  border-collapse: collapse;
+  width: 40px;
+}
+
+.active {
+  position: relative;
+  font-weight: bold;
+}
+
+.break {
+  color: #2c3a47;
+  letter-spacing: 0.2rem;
+  padding: 5px 10px;
+}

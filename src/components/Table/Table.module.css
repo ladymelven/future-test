@@ -1,0 +1,16 @@
+.Table {
+  margin: 30px auto;
+  border: 1px solid #2c3a47;
+  border-collapse: collapse;
+}
+
+.Thead {
+  background-color: #9aecdb;
+}
+
+.Cell {
+  border: 1px solid #2c3a47;
+  border-collapse: collapse;
+  padding: 5px 10px;
+  cursor: pointer;
+}

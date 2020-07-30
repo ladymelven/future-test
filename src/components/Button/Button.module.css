@@ -1,0 +1,36 @@
+.Button {
+  display: inline-block;
+  color: #2c3a47;
+  text-decoration: none;
+  outline: none;
+  padding: 10px 20px;
+  border: 1px solid transparent;
+  background-color: #55e6c1;
+  border-radius: 5px;
+  box-shadow: inset 3px 3px #9aecdb;
+}
+
+.Button:active,
+.Button:focus {
+  border: 1px solid #58b19f;
+  box-shadow: inset 3px 3px #58b19f;
+}
+
+.Button:disabled {
+  background-color: lightgrey;
+  box-shadow: none;
+  border: none;
+}
+
+.submit {
+  background-color: transparent;
+  padding: 5px 10px;
+  box-shadow: none;
+  border: 1px solid #55e6c1;
+  margin-left: 10px;
+}
+
+.submit:active,
+.submit:focus {
+  box-shadow: none;
+}

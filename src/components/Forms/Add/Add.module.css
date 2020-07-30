@@ -1,0 +1,29 @@
+.Add {
+  margin: 30px;
+  text-align: center;
+}
+
+.labels {
+  width: 100%;
+  display: flex;
+}
+
+.label {
+  display: block;
+  width: 20%;
+  text-align: center;
+}
+
+.inputs {
+  width: 100%;
+}
+
+.input {
+  width: 20%;
+  padding: 2px 5px;
+}
+
+.buttonContainer {
+  margin-top: 5px;
+  text-align: center;
+}
