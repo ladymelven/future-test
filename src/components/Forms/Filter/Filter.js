@@ -4,6 +4,7 @@ import styles from "./Filter.module.css";
 import Button from "../../Button/Button";
 
 const Filter = props => {
+	//здесь я использую Хук, потому что только одна переменная состояния
 	const [value, setValue] = useState("");
 
 	const onSubmit = event => {

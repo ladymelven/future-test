@@ -3,13 +3,18 @@ import styles from "./Pagination.module.css";
 
 const Pagination = props => {
 	const pageFiller = () => {
+		/*функция определяет, сколько сколько "соседей" будет у активной страницы с
+	каждой стороны, ставить ли заглушки (...) и с какой стороны. Наверно, можно бы
+	сделать ее короче, но хотела сделать читабельнее. */
 		const before = [];
 		const after = [];
 
+		//добавляем соседей слева (предыдущие страницы)
 		for (let i = 1; i < 3; i++) {
 			if (props.current - i <= 1) {
 				break;
 			} else {
+				//unshift нехорош для производительности, но у нас всегда только 2 элемента
 				before.unshift(
 					<div
 						key={props.current - i}
@@ -22,6 +27,7 @@ const Pagination = props => {
 			}
 		}
 
+		//добавляем соседей справа (следующие страницы)
 		for (let i = 1; i < 3; i++) {
 			if (props.current + i >= props.totalPages) {
 				break;
@@ -38,6 +44,7 @@ const Pagination = props => {
 			}
 		}
 
+		//определяем, не является ли текущая страница первой/последней
 		const currentPage =
 			props.current !== 1 && props.current !== props.totalPages ? (
 				<div
@@ -48,6 +55,7 @@ const Pagination = props => {
 				</div>
 			) : null;
 
+		//собираем все вместе и по необходимости добавляем заглушки
 		return (
 			<React.Fragment>
 				{props.current > 4 ? <div className={styles.break}>...</div> : null}
@@ -61,6 +69,7 @@ const Pagination = props => {
 		);
 	};
 
+	//css классы для первой и последней страницы
 	let firstPageClasses = styles.page + " " + styles.first;
 	if (props.current === 1) {
 		firstPageClasses += ` ${styles.active}`;
