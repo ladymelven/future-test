@@ -29,10 +29,12 @@
 .active {
   position: relative;
   font-weight: bold;
+  cursor: default;
 }
 
 .break {
   color: #2c3a47;
   letter-spacing: 0.2rem;
   padding: 5px 10px;
+  cursor: default;
 }

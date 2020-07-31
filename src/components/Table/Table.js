@@ -7,7 +7,7 @@ const Table = React.memo(props => {
 		return (
 			<Row
 				key={item.id + item.phone.replace(/\D/g, "")}
-				//Однако id в датасете не уникальны! Как так, как так
+				//Однако id в датасете не уникальны! Приходится пристыковывать телефон
 				id={item.id}
 				first={item.firstName}
 				last={item.lastName}

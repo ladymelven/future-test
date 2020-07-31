@@ -32,29 +32,11 @@ class Dataset extends React.Component {
 		currentPage: 1
 	};
 
-	//for devmode
-	// componentDidMount() {
-	// 	fetch(
-	// 		"http://www.filltext.com/?rows=32&id={number|1000}&firstName={firstName}&lastName={lastName}&email={email}&phone={phone|(xxx)xxx-xx-xx}&address={addressObject}&description={lorem|32}"
-	// 	)
-	// 		.then(response => {
-	// 			if (response.ok) {
-	// 				return response.json();
-	// 			} else {
-	// 				throw new Error("Failed to reach server");
-	// 			}
-	// 		})
-	// 		.then(data => {
-	// 			this.setState({ fetching: false, hasData: true, data: data });
-	// 		})
-	// 		.catch(error => {
-	// 			console.log(error.message);
-	// 			this.setState({ fetching: false, hasData: false, broken: true });
-	// 		});
-	// }
-
 	fetchDataHandler = type => {
+		const a = performance.now();
+		// запускаем спиннер
 		this.setState({ fetching: true });
+		//задаем адрес запроса в зависимости от выбранного объема данных
 		let url;
 		if (type === "small") {
 			url =
@@ -66,6 +48,8 @@ class Dataset extends React.Component {
 		fetch(url)
 			.then(response => {
 				if (response.ok) {
+					const b = performance.now();
+					console.log("fetching took " + (b - a) + " ms");
 					return response.json();
 				} else {
 					throw new Error("Failed to reach server");
@@ -73,13 +57,21 @@ class Dataset extends React.Component {
 			})
 			.then(data => {
 				const numPages = Math.ceil(data.length / this.state.perPage);
-				this.setState({
-					fetching: false,
-					hasData: true,
-					data: data,
-					filteredData: data,
-					totalPages: numPages
-				});
+				const c = performance.now();
+				console.log("before setting state was " + (c - a) + " ms");
+				this.setState(
+					{
+						fetching: false,
+						hasData: true,
+						data: data,
+						filteredData: data,
+						totalPages: numPages
+					},
+					() => {
+						const d = performance.now();
+						console.log("overall took " + (d - a) + " ms");
+					}
+				);
 			})
 			.catch(error => {
 				console.log(error.message);
@@ -148,6 +140,7 @@ class Dataset extends React.Component {
 			updatedData.push({ ...item });
 		}
 		//можно сначала скопировать, а потом unshift(), но это хуже для производительности
+
 		const newLength = Math.ceil(updatedData.length / this.state.perPage);
 		this.setState({
 			data: updatedData,
@@ -205,7 +198,7 @@ class Dataset extends React.Component {
 		}
 
 		return (
-			<div className="App">
+			<div>
 				{component}
 				{this.state.selected ? <Selected item={this.state.selected} /> : null}
 			</div>

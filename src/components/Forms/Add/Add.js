@@ -52,9 +52,9 @@ class Add extends React.Component {
 			email: this.state.email,
 			phone: this.state.phone,
 			address: {}
+			/*Добавляем пустой адрес, потому что мы вызываем его в другом месте - иначе
+			приложение сломается*/
 		};
-		/*Я добавляю пустой адрес, потому что мы вызываем его в другом месте - иначе
-		приложение сломается*/
 		this.props.submit(newRow);
 		this.toggleActiveHandler();
 	};
